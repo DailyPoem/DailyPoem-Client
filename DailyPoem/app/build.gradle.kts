@@ -44,6 +44,13 @@ dependencies {
     implementation(Dependency.AndroidX.APP_COMPAT)
     implementation(Dependency.AndroidX.MATERIAL)
     implementation(Dependency.AndroidX.CONSTRAINT_LAYOUT)
+    implementation(Dependency.Compose.JUNIT)
+    implementation(Dependency.Compose.MATERIAL)
+    implementation(Dependency.Compose.MATERIAL_ICON_CORE)
+    implementation(Dependency.Compose.MATERIAL_ICON_EXTENDED)
+    implementation(Dependency.Compose.UI)
+    implementation(Dependency.Compose.UI_TOOLING)
+
     testImplementation(Dependency.Test.JUNIT)
     androidTestImplementation(Dependency.AndroidTest.TEST_RUNNER)
     androidTestImplementation(Dependency.AndroidTest.ESPRESSO_CORE)

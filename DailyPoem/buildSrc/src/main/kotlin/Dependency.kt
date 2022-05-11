@@ -4,6 +4,16 @@ object Dependency {
         const val SDK = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.21"
     }
 
+    object Compose {
+        const val UI = "androidx.compose.ui:ui:${Versions.COMPOSE}"
+        const val UI_TOOLING = "androidx.compose.foundation:foundation:${Versions.COMPOSE}"
+        const val MATERIAL = "androidx.compose.material:material:${Versions.COMPOSE}"
+        const val MATERIAL_ICON_CORE ="androidx.compose.material:material-icons-core:${Versions.COMPOSE}"
+        const val MATERIAL_ICON_EXTENDED ="androidx.compose.material:material-icons-extended:${Versions.COMPOSE}"
+        const val JUNIT = "androidx.compose.ui:ui-test-junit4:${Versions.COMPOSE}"
+
+    }
+
     object AndroidX {
         const val MATERIAL = "com.google.android.material:material:1.5.0"
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.3"
