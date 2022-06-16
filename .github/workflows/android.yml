@@ -45,7 +45,10 @@ jobs:
 
       - name: Run detekt
         run: ./gradlew detekt
-
+        
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
 
