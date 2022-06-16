@@ -51,6 +51,10 @@ jobs:
 
       - name: Build assemble release apk
         run: ./gradlew assembleRelease
+        
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
 
       - name: Create android test report
         uses: asadmansr/android-test-report-action@v1.2.0
