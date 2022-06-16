@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -9,10 +9,10 @@ android {
 
     defaultConfig {
         applicationId = "com.patrick.dailypoem"
-        minSdk = 21
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = Application.minSdk
+        targetSdk = Application.targetSdk
+        versionCode = Application.versionCode
+        versionName = Application.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Application.sourceCompat
+        targetCompatibility = Application.targetCompat
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Application.jvmTarget
     }
     buildFeatures {
         dataBinding = true
@@ -40,18 +40,19 @@ android {
 
 dependencies {
 
-    implementation(Dependency.KTX.CORE)
-    implementation(Dependency.AndroidX.APP_COMPAT)
-    implementation(Dependency.AndroidX.MATERIAL)
-    implementation(Dependency.AndroidX.CONSTRAINT_LAYOUT)
-    implementation(Dependency.Compose.JUNIT)
-    implementation(Dependency.Compose.MATERIAL)
-    implementation(Dependency.Compose.MATERIAL_ICON_CORE)
-    implementation(Dependency.Compose.MATERIAL_ICON_EXTENDED)
-    implementation(Dependency.Compose.UI)
-    implementation(Dependency.Compose.UI_TOOLING)
+    val dependencies = listOf(
+        Dependencies.Ui,
+        Dependencies.Ktx,
+        Dependencies.Util,
+        Dependencies.Essential,
+        Dependencies.Jetpack,
+    ).flatten()
 
-    testImplementation(Dependency.Test.JUNIT)
-    androidTestImplementation(Dependency.AndroidTest.TEST_RUNNER)
-    androidTestImplementation(Dependency.AndroidTest.ESPRESSO_CORE)
+
+    dependencies.forEach(::implementation)
+    Dependencies.Debug.forEach(::debugImplementation)
+
+    Dependencies.Compiler.forEach(::kapt)
 }
+
+
