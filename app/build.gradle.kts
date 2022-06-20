@@ -40,6 +40,7 @@ android {
 
 dependencies {
 
+    testImplementation("junit:junit:4.12")
     val dependencies = listOf(
         Dependencies.Ui,
         Dependencies.Ktx,
