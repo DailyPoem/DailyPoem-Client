@@ -3,7 +3,7 @@ object Versions {
 
     object Essential {
         const val Kotlin = "1.6.21"
-        const val Gradle = "7.1.3"
+        const val Gradle = "7.2.1"
         const val Coroutines = "1.6.2"
     }
 
