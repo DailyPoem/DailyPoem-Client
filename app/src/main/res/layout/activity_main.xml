@@ -27,7 +27,7 @@
             android:id="@+id/textPoemBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/seoulhangang_medium"
+            android:fontFamily="@font/seoulhangang"
             android:text="Hello World!"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

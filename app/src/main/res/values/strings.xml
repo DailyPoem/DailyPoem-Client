@@ -3,4 +3,9 @@
     <string name="settings">설정</string>
     <string name="copy">복사하기</string>
     <string name="share">공유하기</string>
+    <string name="share_description">인공지능이 만든 시를 공유해보세요!</string>
+    <string name="share_kakaotalk">카카오톡으로 공유</string>
+    <string name="share_facebook">페이스북으로 공유</string>
+    <string name="share_instagram">인스타그램으로 공유</string>
+    <string name="share_twitter">트위터로 공유</string>
 </resources>

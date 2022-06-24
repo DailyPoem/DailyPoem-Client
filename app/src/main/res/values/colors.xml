@@ -13,4 +13,6 @@
 
     <color name="dailyPoem_gray">#726866</color>
     <color name="dailyPoem_gray_light">#90827D</color>
+
+    <color name="dailyPoem_black_background">#BF000000</color>
 </resources>
