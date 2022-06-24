@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="dailyPoem_brown_light">#B56B3D</color>
+    <color name="dailyPoem_brown">#62473C</color>
+
+    <color name="dailyPoem_gray">#726866</color>
+    <color name="dailyPoem_gray_light">#90827D</color>
 </resources>
