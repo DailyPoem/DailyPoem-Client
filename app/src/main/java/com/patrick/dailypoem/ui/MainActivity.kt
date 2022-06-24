@@ -3,6 +3,7 @@ package com.patrick.dailypoem.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.patrick.dailypoem.R
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 
@@ -12,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) = with(binding) {
         super.onCreate(savedInstanceState)
 
-
+        buttonShare.setOnClickListener {
+            ShareBottomSheet().show(supportFragmentManager, null)
+        }
     }
 }
