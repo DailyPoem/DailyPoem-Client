@@ -19,6 +19,8 @@ class MainViewModel @Inject constructor(
     val poemResult: LiveData<NetworkResult<Poem>> get() = _poemResult
 
     fun getPoem() {
+        _poemResult.value = NetworkResult.Loading()
+
         viewModelScope.launch {
             _poemResult.value = poemRepository.getPoem()
         }
