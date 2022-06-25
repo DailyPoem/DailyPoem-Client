@@ -18,7 +18,6 @@
     <!--    https://stackoverflow.com/questions/34454182/round-only-top-corner-of-cardview-->
     <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
-        <item name="android:background">#00000000</item>
     </style>
 
     <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
