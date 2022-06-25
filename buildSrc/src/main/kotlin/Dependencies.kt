@@ -36,4 +36,15 @@ object Dependencies {
     val Debug = listOf(
         "com.squareup.leakcanary:leakcanary-android:${Versions.Util.LeakCanary}"
     )
+
+    val Retrofit = listOf(
+        "com.squareup.retrofit2:retrofit:${Versions.Retrofit.Retrofit}",
+        "com.squareup.retrofit2:converter-gson:${Versions.Retrofit.Retrofit}",
+
+        // Logging Interceptor
+        "com.squareup.okhttp3:logging-interceptor:${Versions.Retrofit.LoggingInterceptor}",
+
+        // Gson
+        "com.google.code.gson:gson:${Versions.Retrofit.Gson}"
+    )
 }

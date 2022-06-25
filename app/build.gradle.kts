@@ -47,6 +47,7 @@ dependencies {
         Dependencies.Util,
         Dependencies.Essential,
         Dependencies.Jetpack,
+        Dependencies.Retrofit
     ).flatten()
 
 
