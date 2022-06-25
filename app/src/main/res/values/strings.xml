@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">DailyPoem</string>
+    <string name="settings">설정</string>
+    <string name="copy">복사하기</string>
+    <string name="share">공유하기</string>
+    <string name="share_description">인공지능이 만든 시를 공유해보세요!</string>
+    <string name="share_kakaotalk">카카오톡으로 공유</string>
+    <string name="share_facebook">페이스북으로 공유</string>
+    <string name="share_instagram">인스타그램으로 공유</string>
+    <string name="share_twitter">트위터로 공유</string>
+    <string name="poem_placeholder">나 보기가 역겨워\n가실 때에는\n말없이 고이 보내 드리오리다\n\n영변에 약산\n진달래꽃\n아름 따다 가실 길에 뿌리오리다\n\n가시는 걸음걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서\n\n나 보기가 역겨워\n가실 때에는\n죽어도 아니 눈물 흘리오리다</string>
 </resources>
