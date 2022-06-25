@@ -25,11 +25,10 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy { DataBindingUtil.setContentView(this, R.layout.activity_main) }
     private val mainViewModel: MainViewModel by viewModels()
 
-    var isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-
     override fun onCreate(savedInstanceState: Bundle?) = with(binding) {
         super.onCreate(savedInstanceState)
         activity = this@MainActivity
+        viewModel = mainViewModel
         lifecycleOwner = this@MainActivity
 
         mainViewModel.getPoem()
@@ -56,15 +55,15 @@ class MainActivity : AppCompatActivity() {
     private fun handlePoemResult(poemResult: NetworkResult<Poem>) {
         when (poemResult) {
             is NetworkResult.Success -> {
-                isLoading.value = false
+                mainViewModel.isLoading.value = false
                 // TODO: 요청 성공 시 동작 구현 필요
             }
             is NetworkResult.Error -> {
-                isLoading.value = false
+                mainViewModel.isLoading.value = false
                 // TODO: 요청 실패 시 동작 구현 필요
             }
             is NetworkResult.Loading -> {
-                isLoading.value = true
+                mainViewModel.isLoading.value = true
             }
         }
 

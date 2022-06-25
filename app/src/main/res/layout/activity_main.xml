@@ -10,6 +10,10 @@
         <variable
             name="activity"
             type="com.patrick.dailypoem.ui.MainActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.patrick.dailypoem.ui.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="@{!activity.isLoading}"
+            android:clickable="@{!viewModel.isLoading}"
             android:contentDescription="@string/settings"
             android:focusable="true"
             android:src="@drawable/ic_settings"
@@ -63,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="@{!activity.isLoading}"
+                android:clickable="@{!viewModel.isLoading}"
                 android:contentDescription="@string/copy"
                 android:focusable="true"
                 android:onClick="@{() -> activity.copyPoemToClipboard()}"
@@ -76,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="@{!activity.isLoading}"
+                android:clickable="@{!viewModel.isLoading}"
                 android:contentDescription="@string/share"
                 android:focusable="true"
                 android:onClick="@{() -> activity.showShareBottomSheet()}"
@@ -90,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminateTint="@color/white"
-            android:visibility="@{activity.isLoading ? View.VISIBLE : View.GONE}"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

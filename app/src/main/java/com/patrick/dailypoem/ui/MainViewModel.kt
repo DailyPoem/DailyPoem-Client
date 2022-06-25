@@ -18,6 +18,8 @@ class MainViewModel @Inject constructor(
     private val _poemResult: MutableLiveData<NetworkResult<Poem>> = MutableLiveData(NetworkResult.Loading())
     val poemResult: LiveData<NetworkResult<Poem>> get() = _poemResult
 
+    var isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+
     fun getPoem() {
         _poemResult.value = NetworkResult.Loading()
 
