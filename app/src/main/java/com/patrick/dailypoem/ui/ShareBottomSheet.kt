@@ -22,7 +22,9 @@ class ShareBottomSheet : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = with(binding) {
-        buttonShareKakaoTalk.setOnClickListener { dismiss() }
+        buttonShareKakaoTalk.setOnClickListener {
+            dismiss()
+        }
 
         return root
     }
