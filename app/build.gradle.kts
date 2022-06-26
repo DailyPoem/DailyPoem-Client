@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -47,6 +48,7 @@ dependencies {
         Dependencies.Util,
         Dependencies.Essential,
         Dependencies.Jetpack,
+        Dependencies.Retrofit
     ).flatten()
 
 

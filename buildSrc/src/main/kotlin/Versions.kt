@@ -34,4 +34,10 @@ object Versions {
         const val Logeukes = "1.0.0"
 
     }
+
+    object Retrofit {
+        const val Retrofit = "2.9.0"
+        const val LoggingInterceptor = "4.9.1"
+        const val Gson = "2.8.7"
+    }
 }
