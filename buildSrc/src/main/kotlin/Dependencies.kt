@@ -20,6 +20,7 @@ object Dependencies {
         "com.google.android.flexbox:flexbox:${Versions.Ui.Flexbox}",
         "com.google.android.material:material:${Versions.Ui.Material}",
         "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}",
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.Ui.SwipeRefreshLayout}"
     )
 
     val Util = listOf(
