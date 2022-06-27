@@ -6,13 +6,8 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View.GONE
-import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
 import com.patrick.dailypoem.data.model.Poem
@@ -27,11 +22,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) = with(binding) {
         super.onCreate(savedInstanceState)
+        lifecycleOwner = this@MainActivity
         activity = this@MainActivity
         viewModel = mainViewModel
-        lifecycleOwner = this@MainActivity
 
-        mainViewModel.getPoem()
+//        mainViewModel.getPoem()
         mainViewModel.poemResult.observe(this@MainActivity) { poemResult ->
             handlePoemResult(poemResult)
         }
