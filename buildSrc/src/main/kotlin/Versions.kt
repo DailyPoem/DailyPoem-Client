@@ -16,6 +16,7 @@ object Versions {
         const val AppCompat = "1.4.1"
         const val Splash = "1.0.0-beta01"
         const val ConstraintLayout = "2.1.4"
+        const val SwipeRefreshLayout = "1.1.0"
     }
 
     object Ktx {

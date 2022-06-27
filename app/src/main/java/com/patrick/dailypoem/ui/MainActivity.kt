@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun onRefresh() {
+        mainViewModel.getPoem()
+    }
+
     fun copyPoemToClipboard() {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val poem = binding.textPoemBody.text
