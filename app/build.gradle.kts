@@ -51,11 +51,8 @@ dependencies {
         Dependencies.Retrofit
     ).flatten()
 
-
     dependencies.forEach(::implementation)
     Dependencies.Debug.forEach(::debugImplementation)
 
     Dependencies.Compiler.forEach(::kapt)
 }
-
-

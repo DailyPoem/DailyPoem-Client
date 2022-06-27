@@ -5,7 +5,6 @@ import android.content.ClipboardManager
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
@@ -65,6 +64,5 @@ class MainActivity : AppCompatActivity() {
                 mainViewModel.isLoading.value = true
             }
         }
-
     }
 }

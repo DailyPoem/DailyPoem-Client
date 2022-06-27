@@ -3,7 +3,6 @@ package com.patrick.dailypoem.data.repository
 import com.patrick.dailypoem.data.model.Poem
 import com.patrick.dailypoem.data.network.PoemService
 import com.patrick.dailypoem.util.NetworkResult
-import retrofit2.Response
 import javax.inject.Inject
 
 class PoemRepository @Inject constructor(
