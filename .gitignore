@@ -95,3 +95,5 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 .cxx
+
+buildSrc/build
