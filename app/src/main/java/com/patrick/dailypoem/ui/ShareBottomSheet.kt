@@ -9,7 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.link.LinkClient
 import com.kakao.sdk.link.WebSharerClient
-import com.kakao.sdk.template.model.*
+import com.kakao.sdk.template.model.* // ktlint-disable no-wildcard-imports
 import com.patrick.dailypoem.R
 import com.patrick.dailypoem.databinding.FragmentShareBottomSheetBinding
 import timber.log.Timber
@@ -32,18 +32,13 @@ class ShareBottomSheet : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? = with(binding) {
         this.view = this@ShareBottomSheet
-        buttonShareKakaoTalk.setOnClickListener {
-            dismiss()
-        }
-
         return root
     }
 
     // todo 안의 내용 변경해야함
     private fun defaultFeed() = FeedTemplate(
         content = Content(
-            title = "딸기 치즈 케익",
-            description = "#케익 #딸기 #삼평동 #카페 #분위기 #소개팅",
+            title = "시",
             imageUrl = "http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
             link = Link(
                 webUrl = "https://developers.kakao.com",
@@ -56,13 +51,7 @@ class ShareBottomSheet : BottomSheetDialogFragment() {
             sharedCount = 845
         ),
         buttons = listOf(
-            Button(
-                "웹으로 보기",
-                Link(
-                    webUrl = "https://developers.kakao.com",
-                    mobileWebUrl = "https://developers.kakao.com"
-                )
-            ),
+
             Button(
                 "앱으로 보기",
                 Link(

@@ -12,13 +12,15 @@
         <variable
             name="viewModel"
             type="com.patrick.dailypoem.ui.MainViewModel" />
+
+
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        isLoading="@{viewModel.isLoading}"
         onRefresh="@{() -> activity.onRefresh()}"
-        isLoading="@{viewModel.isLoading}">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
