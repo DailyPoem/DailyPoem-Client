@@ -11,5 +11,6 @@
     <string name="poem_placeholder">나 보기가 역겨워\n가실 때에는\n말없이 고이 보내 드리오리다\n\n영변에 약산\n진달래꽃\n아름 따다 가실 길에 뿌리오리다\n\n가시는 걸음걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서\n\n나 보기가 역겨워\n가실 때에는\n죽어도 아니 눈물 흘리오리다</string>
 
     <string name="kakaolink_host">kakaolink</string>
-    <string name="kakao_scheme">kakakoed5e321a09c8411bb5998878187eb109</string>
+    <string name="kakao_scheme">"입력"</string>
+    <string name="kakao_native">"하세요!"</string>
 </resources>

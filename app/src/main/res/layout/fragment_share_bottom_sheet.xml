@@ -74,6 +74,16 @@
                         android:src="@drawable/ic_button_share_kakaotalk" />
 
                     <ImageView
+                        android:id="@+id/share_btn"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:onClick="@{()->view.intentSendPoem()}"
+                        android:layout_marginHorizontal="10dp"
+                        android:contentDescription="@string/share_kakaotalk"
+                        android:src="@drawable/ic_share" />
+
+
+                    <ImageView
                         android:id="@+id/buttonShareFacebook"
                         android:layout_width="60dp"
                         android:layout_height="60dp"

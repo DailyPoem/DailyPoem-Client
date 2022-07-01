@@ -1,6 +1,7 @@
 package com.patrick.dailypoem.ui
 
 import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -61,6 +62,14 @@ class ShareBottomSheet : BottomSheetDialogFragment() {
             )
         )
     )
+
+    fun intentSendPoem() {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, "poem")
+        val shareIntent: Intent = Intent.createChooser(intent, "share")
+        startActivity(shareIntent)
+    }
 
     fun sendKakaoLink() {
         if (LinkClient.instance.isKakaoLinkAvailable(this.requireContext())) {
