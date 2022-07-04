@@ -89,7 +89,6 @@
                     android:clickable="@{!viewModel.isLoading}"
                     android:contentDescription="@string/share"
                     android:focusable="true"
-                    android:onClick="@{() -> activity.showShareBottomSheet()}"
                     android:padding="6dp"
                     android:src="@drawable/ic_share"
                     app:tint="@color/white" />
