@@ -49,14 +49,14 @@
                 android:layout_marginHorizontal="48dp"
                 android:fontFamily="@font/seoulhangang"
                 android:lineHeight="24dp"
-                android:text="@string/poem_placeholder"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/poem_placeholder" />
 
             <LinearLayout
                 android:id="@+id/shareWrap"
