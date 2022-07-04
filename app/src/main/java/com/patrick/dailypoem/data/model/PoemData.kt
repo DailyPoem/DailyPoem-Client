@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class PoemData(
     @SerializedName("code")
-    val code: String?,
+    val code: String,
     @SerializedName("data")
-    val `data`: Data?,
+    val data: Data,
     @SerializedName("status")
-    val status: String?
+    val status: String
 )

@@ -14,7 +14,6 @@ import com.patrick.dailypoem.data.model.PoemData
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -25,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
     private val mainViewModel: MainViewModel by viewModels()
-    private val notFoundMessage = "메세지를 찾을 수 없습니다."
 
     override fun onCreate(savedInstanceState: Bundle?) = with(binding) {
         super.onCreate(savedInstanceState)
@@ -68,11 +66,10 @@ class MainActivity : AppCompatActivity() {
     private fun handlePoemResult(poemResult: NetworkResult<PoemData>) {
         when (poemResult) {
             is NetworkResult.Success -> {
-                val message = poemResult.data?.data?.epitagram ?: notFoundMessage
+                val message = poemResult.data!!.data.epitagram
                 mainViewModel.isLoading.value = false
                 binding.textPoemBody.text = message
                 intentSendPoem(message)
-                Timber.d("${poemResult.data?.data}")
                 // TODO: 요청 성공 시 동작 구현 필요
             }
             is NetworkResult.Error -> {
