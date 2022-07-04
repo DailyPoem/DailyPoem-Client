@@ -51,8 +51,6 @@ dependencies {
         Dependencies.Retrofit,
         Dependencies.Kakao,
     ).flatten()
-    implementation("com.kakao.sdk", "kakaolink", "1.27.0") // 카카오링크 sdk를 사용하기 위해 필요
-    implementation("com.jakewharton.timber:timber:4.7.1")
 
     dependencies.forEach(::implementation)
     Dependencies.Debug.forEach(::debugImplementation)
