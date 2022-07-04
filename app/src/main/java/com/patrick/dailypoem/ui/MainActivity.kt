@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
-import com.patrick.dailypoem.data.model.Poem
+import com.patrick.dailypoem.data.model.PoemData
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         activity = this@MainActivity
         viewModel = mainViewModel
 
-//        mainViewModel.getPoem()
+        mainViewModel.getPoem()
         mainViewModel.poemResult.observe(this@MainActivity) { poemResult ->
             handlePoemResult(poemResult)
         }
@@ -56,10 +56,12 @@ class MainActivity : AppCompatActivity() {
         ShareBottomSheet().show(supportFragmentManager, null)
     }
 
-    private fun handlePoemResult(poemResult: NetworkResult<Poem>) {
+    private fun handlePoemResult(poemResult: NetworkResult<PoemData>) {
         when (poemResult) {
             is NetworkResult.Success -> {
                 mainViewModel.isLoading.value = false
+                io.github.jisungbin.logeukes.logeukes { poemResult.data }
+                binding.textPoemBody.text = poemResult.data?.data?.epitagram ?: "메세지를 찾을 수 없습니다."
                 // TODO: 요청 성공 시 동작 구현 필요
             }
             is NetworkResult.Error -> {
