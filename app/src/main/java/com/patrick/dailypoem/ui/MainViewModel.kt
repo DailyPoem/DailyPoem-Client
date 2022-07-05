@@ -8,6 +8,7 @@ import com.patrick.dailypoem.data.model.PoemData
 import com.patrick.dailypoem.data.model.random.RandomImage
 import com.patrick.dailypoem.data.repository.PoemRepository
 import com.patrick.dailypoem.data.repository.random.RandomImageRepository
+import com.patrick.dailypoem.data.repository.RandomNameRepository
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,6 +19,8 @@ class MainViewModel @Inject constructor(
     private val poemRepository: PoemRepository,
     private val randomImageRepository: RandomImageRepository
 ) : ViewModel() {
+    private val randomNameRepository = RandomNameRepository()
+
     private val _poemResult: MutableLiveData<NetworkResult<PoemData>> =
         MutableLiveData(NetworkResult.Loading())
     val poemResult: LiveData<NetworkResult<PoemData>> get() = _poemResult
@@ -27,6 +30,8 @@ class MainViewModel @Inject constructor(
     val imageResult: LiveData<NetworkResult<RandomImage>> get() = _imageResult
 
     var isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    fun getName(): String = randomNameRepository.getRandomName()
 
     fun getPoem() {
         _poemResult.value = NetworkResult.Loading()
