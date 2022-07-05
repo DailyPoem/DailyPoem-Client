@@ -4,7 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Coding/Android/DailyPoem-Client/app/src/main/res/font/seoulhangang.xml" value="0.37280889268918344" />
-        <entry key="..\:/Coding/Android/DailyPoem-Client/app/src/main/res/layout/activity_main.xml" value="0.34886703719538265" />
+        <entry key="..\:/Coding/Android/DailyPoem-Client/app/src/main/res/layout/activity_main.xml" value="0.2742520398912058" />
         <entry key="..\:/Coding/DailyPoem-Client/app/src/main/res/drawable/ic_button_share_facebook.xml" value="0.2845" />
         <entry key="..\:/Coding/DailyPoem-Client/app/src/main/res/drawable/ic_button_share_twitter.xml" value="0.2845" />
         <entry key="..\:/Coding/DailyPoem-Client/app/src/main/res/drawable/ic_copy.xml" value="0.199" />
@@ -17,7 +17,7 @@
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

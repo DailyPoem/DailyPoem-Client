@@ -1,6 +1,5 @@
 package com.patrick.dailypoem.data.model.random
 
-
 import com.google.gson.annotations.SerializedName
 
 data class ImageResult(

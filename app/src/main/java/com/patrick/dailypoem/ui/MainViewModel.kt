@@ -5,12 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.patrick.dailypoem.data.model.Poem
-import com.patrick.dailypoem.data.model.PoemData
-import com.patrick.dailypoem.data.model.random.RandomImage
 import com.patrick.dailypoem.data.repository.MainRepository
-import com.patrick.dailypoem.data.repository.PoemRepository
-import com.patrick.dailypoem.data.repository.RandomImageRepository
-import com.patrick.dailypoem.data.repository.RandomNameRepository
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

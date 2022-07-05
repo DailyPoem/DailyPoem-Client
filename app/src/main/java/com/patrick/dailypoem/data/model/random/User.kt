@@ -1,6 +1,5 @@
 package com.patrick.dailypoem.data.model.random
 
-
 import com.google.gson.annotations.SerializedName
 
 data class User(
@@ -31,5 +30,5 @@ data class User(
     @SerializedName("total_likes")
     val totalLikes: Int,
     @SerializedName("total_photos")
-    val totalPhotos: Int,
+    val totalPhotos: Int
 )

@@ -18,7 +18,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object NetworkModule {
-    // TODO: 서버 완성 시 Base URL 수정 필요
     private const val BASE_URL = "http://34.64.233.183/"
     private const val BASE_RANDOM_URL = "https://api.unsplash.com/"
 
