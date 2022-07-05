@@ -32,10 +32,6 @@ object Dependencies {
         "com.kakao.sdk:kakaolink:1.27.0", // 카카오링크
 
     )
-    val Glide = listOf(
-        "com.github.bumptech.glide:glide:4.11.0"
-
-    )
     val Jetpack = listOf(
         "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}"
     )
