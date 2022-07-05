@@ -7,7 +7,7 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface RandomImageService {
-    @GET("/search/photos")
+    @GET("photos/random")
     suspend fun getRandomImage(
         @Header("Authorization") authorization: String = "Client-ID HmN9iyUFrqDORpCmKq1zZxl0fm7T_DJ0ATn7O7o32NI",
         @Query("query") query: String = "historical portrait",
