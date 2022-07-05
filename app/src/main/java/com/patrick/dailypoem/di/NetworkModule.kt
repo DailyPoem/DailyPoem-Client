@@ -1,6 +1,8 @@
 package com.patrick.dailypoem.di
 
+import com.google.gson.GsonBuilder
 import com.patrick.dailypoem.data.network.PoemService
+import com.patrick.dailypoem.data.network.RandomImageService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,6 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -17,6 +20,7 @@ import javax.inject.Singleton
 object NetworkModule {
     // TODO: 서버 완성 시 Base URL 수정 필요
     private const val BASE_URL = "http://34.64.233.183/"
+    private const val BASE_RANDOM_URL = "https://api.unsplash.com/"
 
     @Singleton
     @Provides
@@ -39,6 +43,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    @Named("poem")
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
@@ -50,5 +55,22 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun providePoemService(retrofit: Retrofit): PoemService = retrofit.create(PoemService::class.java)
+    @Named("random")
+    fun provideRandomRetrofit(
+        okHttpClient: OkHttpClient
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_RANDOM_URL)
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+        .build()
+
+    @Singleton
+    @Provides
+    fun providePoemService(@Named("poem") retrofit: Retrofit): PoemService =
+        retrofit.create(PoemService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideRandomImageService(@Named("random") retrofit: Retrofit): RandomImageService =
+        retrofit.create(RandomImageService::class.java)
 }

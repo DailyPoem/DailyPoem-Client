@@ -5,12 +5,15 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
 import com.patrick.dailypoem.data.model.PoemData
+import com.patrick.dailypoem.data.model.random.RandomImage
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,8 +35,12 @@ class MainActivity : AppCompatActivity() {
         viewModel = mainViewModel
 
         mainViewModel.getPoem()
+        mainViewModel.getImage()
         mainViewModel.poemResult.observe(this@MainActivity) { poemResult ->
             handlePoemResult(poemResult)
+        }
+        mainViewModel.imageResult.observe(this@MainActivity) { imageResult ->
+            handleImageResult(imageResult)
         }
     }
 
@@ -74,6 +81,26 @@ class MainActivity : AppCompatActivity() {
             is NetworkResult.Error -> {
                 mainViewModel.isLoading.value = false
                 // TODO: 요청 실패 시 동작 구현 필요
+            }
+            is NetworkResult.Loading -> {
+                mainViewModel.isLoading.value = false
+            }
+        }
+    }
+
+    private fun handleImageResult(poemResult: NetworkResult<RandomImage>) {
+        when (poemResult) {
+            is NetworkResult.Success -> {
+                val message = poemResult.data!!.results.first().urls.raw
+                mainViewModel.isLoading.value = false
+                Glide.with(this).load(message).into(binding.ivRandomImage)
+                Log.d("TAG", "handleImageResult: ${poemResult.data}")
+                // TODO: 요청 성공 시 동작 구현 필요
+            }
+            is NetworkResult.Error -> {
+                mainViewModel.isLoading.value = false
+                // TODO: 요청 실패 시 동작 구현 필요
+                Log.d("TAG", "handleImageResult: ${poemResult.message}")
             }
             is NetworkResult.Loading -> {
                 mainViewModel.isLoading.value = false
