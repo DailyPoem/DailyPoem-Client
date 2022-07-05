@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         Snackbar.make(binding.root, "시가 복사되었습니다", Snackbar.LENGTH_SHORT)
             .setAction("확인") {}
-            .setAction("확인") {}
             .show()
     }
 
