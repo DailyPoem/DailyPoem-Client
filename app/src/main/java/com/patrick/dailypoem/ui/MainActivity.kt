@@ -3,21 +3,26 @@ package com.patrick.dailypoem.ui
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
-import com.patrick.dailypoem.data.model.Poem
+import com.patrick.dailypoem.data.model.PoemData
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val binding: ActivityMainBinding by lazy { DataBindingUtil.setContentView(this, R.layout.activity_main) }
+    private val binding: ActivityMainBinding by lazy {
+        DataBindingUtil.setContentView(
+            this,
+            R.layout.activity_main
+        )
+    }
     private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) = with(binding) {
@@ -26,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         activity = this@MainActivity
         viewModel = mainViewModel
 
-//        mainViewModel.getPoem()
+        mainViewModel.getPoem()
         mainViewModel.poemResult.observe(this@MainActivity) { poemResult ->
             handlePoemResult(poemResult)
         }
@@ -47,14 +52,23 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    fun showShareBottomSheet() {
-        ShareBottomSheet().show(supportFragmentManager, null)
+    private fun intentSendPoem(message: String?) {
+        binding.buttonShare.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT, message)
+            val shareIntent: Intent = Intent.createChooser(intent, "share")
+            startActivity(shareIntent)
+        }
     }
 
-    private fun handlePoemResult(poemResult: NetworkResult<Poem>) {
+    private fun handlePoemResult(poemResult: NetworkResult<PoemData>) {
         when (poemResult) {
             is NetworkResult.Success -> {
+                val message = poemResult.data!!.data.epitagram
                 mainViewModel.isLoading.value = false
+                binding.textPoemBody.text = message
+                intentSendPoem(message)
                 // TODO: 요청 성공 시 동작 구현 필요
             }
             is NetworkResult.Error -> {
@@ -62,9 +76,8 @@ class MainActivity : AppCompatActivity() {
                 // TODO: 요청 실패 시 동작 구현 필요
             }
             is NetworkResult.Loading -> {
-                mainViewModel.isLoading.value = true
+                mainViewModel.isLoading.value = false
             }
         }
-
     }
 }

@@ -24,7 +24,13 @@ object Dependencies {
     )
 
     val Util = listOf(
-        "land.sungbin:logeukes:${Versions.Util.Logeukes}",
+        "com.jakewharton.timber:timber:4.7.1"
+    )
+
+    val Kakao = listOf(
+        "com.kakao.sdk:v2-link:2.4.2", // 메시지(카카오링크)
+        "com.kakao.sdk:kakaolink:1.27.0", // 카카오링크
+
     )
     val Jetpack = listOf(
         "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}"

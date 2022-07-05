@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
     // TODO: 서버 완성 시 Base URL 수정 필요
-    private const val BASE_URL = "https://example.com/"
+    private const val BASE_URL = "http://34.64.233.183/"
 
     @Singleton
     @Provides
@@ -26,12 +26,12 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
-    OkHttpClient.Builder()
-    .addInterceptor(httpLoggingInterceptor)
-    .connectTimeout(10, TimeUnit.SECONDS)
-    .readTimeout(10, TimeUnit.SECONDS)
-    .writeTimeout(10, TimeUnit.SECONDS)
-    .build()
+        OkHttpClient.Builder()
+            .addInterceptor(httpLoggingInterceptor)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .build()
 
     @Singleton
     @Provides

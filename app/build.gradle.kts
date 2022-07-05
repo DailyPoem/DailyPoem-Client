@@ -48,14 +48,12 @@ dependencies {
         Dependencies.Util,
         Dependencies.Essential,
         Dependencies.Jetpack,
-        Dependencies.Retrofit
+        Dependencies.Retrofit,
+        Dependencies.Kakao,
     ).flatten()
-
 
     dependencies.forEach(::implementation)
     Dependencies.Debug.forEach(::debugImplementation)
 
     Dependencies.Compiler.forEach(::kapt)
 }
-
-
