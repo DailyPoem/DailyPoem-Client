@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
 
     fun onRefresh() {
         mainViewModel.getPoem()
+        mainViewModel.getImage()
+
     }
 
     fun copyPoemToClipboard() {
