@@ -11,6 +11,6 @@ interface RandomImageService {
     suspend fun getRandomImage(
         @Header("Authorization") authorization: String = "Client-ID HmN9iyUFrqDORpCmKq1zZxl0fm7T_DJ0ATn7O7o32NI",
         @Query("query") query: String = "historical portrait",
-        @Query("color") color: String = "black_and_white"
+//        @Query("color") color: String = "black_and_white"
     ): Response<RandomImage>
 }

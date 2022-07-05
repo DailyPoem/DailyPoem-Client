@@ -5,6 +5,10 @@ class RandomNameRepository {
 }
 
 val firstNameList = listOf(
+    "태웅",
+    "경민",
+    "보석",
+    "병진",
     "Wade",
     "Dave",
     "Seth",

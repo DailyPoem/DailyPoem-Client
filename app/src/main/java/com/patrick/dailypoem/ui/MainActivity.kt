@@ -9,9 +9,11 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import coil.load
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
+import com.patrick.dailypoem.data.model.Poem
 import com.patrick.dailypoem.data.model.PoemData
 import com.patrick.dailypoem.data.model.random.RandomImage
 import com.patrick.dailypoem.databinding.ActivityMainBinding
@@ -21,10 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
-        DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_main
-        )
+        DataBindingUtil.setContentView(this, R.layout.activity_main)
     }
     private val mainViewModel: MainViewModel by viewModels()
 
@@ -34,19 +33,49 @@ class MainActivity : AppCompatActivity() {
         activity = this@MainActivity
         viewModel = mainViewModel
 
-        mainViewModel.getPoem()
-        mainViewModel.getImage()
         mainViewModel.poemResult.observe(this@MainActivity) { poemResult ->
             handlePoemResult(poemResult)
         }
-        mainViewModel.imageResult.observe(this@MainActivity) { imageResult ->
-            handleImageResult(imageResult)
+    }
+
+    private fun handlePoemResult(poemResult: NetworkResult<Poem>) {
+        mainViewModel.isLoading.value = when(poemResult) {
+            is NetworkResult.Success -> {
+                setPoemData(poemResult.data!!)
+                false
+            }
+            is NetworkResult.Error -> {
+                showErrorMessage(poemResult.message!!)
+                false
+            }
+            is NetworkResult.Loading -> {
+                true
+            }
         }
+    }
+
+    private fun showErrorMessage(message: String) {
+        Snackbar.make(binding.root, "로딩 실패: $message", Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun setPoemData(poem: Poem) = with(binding) {
+        ivRandomImage.load(poem.imageUrl) {
+            crossfade(true)
+        }
+        textPoemBody.text = "\"${poem.poem}\""
+        textTeller.text = "- ${poem.teller} -"
+    }
+
+    fun openShareDialog() {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, binding.textPoemBody.text)
+        val shareIntent: Intent = Intent.createChooser(intent, "share")
+        startActivity(shareIntent)
     }
 
     fun onRefresh() {
         mainViewModel.getPoem()
-        mainViewModel.getImage()
     }
 
     fun copyPoemToClipboard() {
@@ -58,51 +87,5 @@ class MainActivity : AppCompatActivity() {
         Snackbar.make(binding.root, "시가 복사되었습니다", Snackbar.LENGTH_SHORT)
             .setAction("확인") {}
             .show()
-    }
-
-    private fun intentSendPoem(message: String?) {
-        binding.buttonShare.setOnClickListener {
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.type = "text/plain"
-            intent.putExtra(Intent.EXTRA_TEXT, message)
-            val shareIntent: Intent = Intent.createChooser(intent, "share")
-            startActivity(shareIntent)
-        }
-    }
-
-    private fun handlePoemResult(poemResult: NetworkResult<PoemData>) {
-        when (poemResult) {
-            is NetworkResult.Success -> {
-                val message = poemResult.data!!.data.epitagram
-                mainViewModel.isLoading.value = false
-                binding.textPoemBody.text = message
-                intentSendPoem(message)
-                // TODO: 요청 성공 시 동작 구현 필요
-            }
-            is NetworkResult.Error -> {
-                mainViewModel.isLoading.value = false
-                // TODO: 요청 실패 시 동작 구현 필요
-            }
-            is NetworkResult.Loading -> {
-                mainViewModel.isLoading.value = false
-            }
-        }
-    }
-
-    private fun handleImageResult(poemResult: NetworkResult<RandomImage>) {
-        when (poemResult) {
-            is NetworkResult.Success -> {
-                // 생성된 이미지를 랜덤하게 보여줍니다.
-                val imageUrl = poemResult.data!!.results.random().urls.raw
-                mainViewModel.isLoading.value = false
-                Glide.with(this).load(imageUrl).into(binding.ivRandomImage)
-            }
-            is NetworkResult.Error -> {
-                mainViewModel.isLoading.value = false
-            }
-            is NetworkResult.Loading -> {
-                mainViewModel.isLoading.value = false
-            }
-        }
     }
 }
