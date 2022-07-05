@@ -50,6 +50,7 @@ dependencies {
         Dependencies.Jetpack,
         Dependencies.Retrofit,
         Dependencies.Kakao,
+        Dependencies.Glide
     ).flatten()
 
     dependencies.forEach(::implementation)

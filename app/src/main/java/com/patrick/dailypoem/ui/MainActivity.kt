@@ -5,12 +5,15 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
 import com.patrick.dailypoem.data.model.PoemData
+import com.patrick.dailypoem.data.model.random.RandomImage
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,13 +35,18 @@ class MainActivity : AppCompatActivity() {
         viewModel = mainViewModel
 
         mainViewModel.getPoem()
+        mainViewModel.getImage()
         mainViewModel.poemResult.observe(this@MainActivity) { poemResult ->
             handlePoemResult(poemResult)
+        }
+        mainViewModel.imageResult.observe(this@MainActivity) { imageResult ->
+            handleImageResult(imageResult)
         }
     }
 
     fun onRefresh() {
         mainViewModel.getPoem()
+        mainViewModel.getImage()
     }
 
     fun copyPoemToClipboard() {
@@ -74,6 +82,23 @@ class MainActivity : AppCompatActivity() {
             is NetworkResult.Error -> {
                 mainViewModel.isLoading.value = false
                 // TODO: 요청 실패 시 동작 구현 필요
+            }
+            is NetworkResult.Loading -> {
+                mainViewModel.isLoading.value = false
+            }
+        }
+    }
+
+    private fun handleImageResult(poemResult: NetworkResult<RandomImage>) {
+        when (poemResult) {
+            is NetworkResult.Success -> {
+                // 생성된 이미지를 랜덤하게 보여줍니다.
+                val imageUrl = poemResult.data!!.results.random().urls.raw
+                mainViewModel.isLoading.value = false
+                Glide.with(this).load(imageUrl).into(binding.ivRandomImage)
+            }
+            is NetworkResult.Error -> {
+                mainViewModel.isLoading.value = false
             }
             is NetworkResult.Loading -> {
                 mainViewModel.isLoading.value = false
