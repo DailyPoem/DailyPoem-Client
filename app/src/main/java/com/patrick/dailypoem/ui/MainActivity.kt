@@ -17,6 +17,7 @@ import com.patrick.dailypoem.data.model.random.RandomImage
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -47,7 +48,6 @@ class MainActivity : AppCompatActivity() {
     fun onRefresh() {
         mainViewModel.getPoem()
         mainViewModel.getImage()
-
     }
 
     fun copyPoemToClipboard() {
@@ -93,7 +93,13 @@ class MainActivity : AppCompatActivity() {
     private fun handleImageResult(poemResult: NetworkResult<RandomImage>) {
         when (poemResult) {
             is NetworkResult.Success -> {
-                val message = poemResult.data!!.results.first().urls.raw
+                // 생성된 이미지를 랜덤하게 보여줍니다.
+                val message = poemResult.data!!.results[
+                    Random.nextInt(
+                        0,
+                        poemResult.data.results.size - 1
+                    )
+                ].urls.raw
                 mainViewModel.isLoading.value = false
                 Glide.with(this).load(message).into(binding.ivRandomImage)
                 Log.d("TAG", "handleImageResult: ${poemResult.data}")
