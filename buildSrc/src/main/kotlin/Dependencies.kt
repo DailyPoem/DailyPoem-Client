@@ -37,8 +37,7 @@ object Dependencies {
     )
 
     val Compiler = listOf(
-        "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}",
-        "com.github.bumptech.glide:compiler:4.11.0"
+        "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
     )
 
     val Debug = listOf(
