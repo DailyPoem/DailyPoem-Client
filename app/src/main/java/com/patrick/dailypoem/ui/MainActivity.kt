@@ -94,13 +94,15 @@ class MainActivity : AppCompatActivity() {
         when (poemResult) {
             is NetworkResult.Success -> {
                 // 생성된 이미지를 랜덤하게 보여줍니다.
-                val imageUrl = poemResult.data!!.results.random().urls.raw
+                val message = poemResult.data!!.random().urls.raw
                 mainViewModel.isLoading.value = false
-                Glide.with(this).load(imageUrl).into(binding.ivRandomImage)
+                Glide.with(this).load(message).into(binding.ivRandomImage)
                 Log.d("TAG", "handleImageResult: ${poemResult.data}")
+                // TODO: 요청 성공 시 동작 구현 필요
             }
             is NetworkResult.Error -> {
                 mainViewModel.isLoading.value = false
+                // TODO: 요청 실패 시 동작 구현 필요
                 Log.d("TAG", "handleImageResult: ${poemResult.message}")
             }
             is NetworkResult.Loading -> {
