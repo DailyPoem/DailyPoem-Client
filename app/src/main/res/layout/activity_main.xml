@@ -41,10 +41,11 @@
                 app:tint="@color/white" />
 
             <LinearLayout
+                android:id="@+id/poemWrap"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="40dp"
-                android:padding="8dp"
+                android:layout_marginHorizontal="32dp"
+                android:padding="20dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -82,43 +83,42 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:text="- asdfsadf -" />
+            </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/shareWrap"
+            <LinearLayout
+                android:id="@+id/shareWrap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/poemWrap"
+                app:layout_constraintStart_toStartOf="@+id/poemWrap"
+                app:layout_constraintTop_toBottomOf="@+id/poemWrap">
+
+                <ImageView
+                    android:id="@+id/buttonCopy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="@+id/textPoemBody"
-                    app:layout_constraintStart_toStartOf="@+id/textPoemBody"
-                    app:layout_constraintTop_toBottomOf="@+id/textTeller">
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="@{!viewModel.isLoading}"
+                    android:contentDescription="@string/copy"
+                    android:focusable="true"
+                    android:onClick="@{() -> activity.copyPoemToClipboard()}"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_copy"
+                    app:tint="@color/white" />
 
-                    <ImageView
-                        android:id="@+id/buttonCopy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="@{!viewModel.isLoading}"
-                        android:contentDescription="@string/copy"
-                        android:focusable="true"
-                        android:onClick="@{() -> activity.copyPoemToClipboard()}"
-                        android:padding="6dp"
-                        android:src="@drawable/ic_copy"
-                        app:tint="@color/white" />
-
-                    <ImageView
-                        android:id="@+id/buttonShare"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="@{!viewModel.isLoading}"
-                        android:contentDescription="@string/share"
-                        android:focusable="true"
-                        android:onClick="@{() -> activity.openShareDialog()}"
-                        android:padding="6dp"
-                        android:src="@drawable/ic_share"
-                        app:tint="@color/white" />
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/buttonShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="@{!viewModel.isLoading}"
+                    android:contentDescription="@string/share"
+                    android:focusable="true"
+                    android:onClick="@{() -> activity.openShareDialog()}"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_share"
+                    app:tint="@color/white" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
