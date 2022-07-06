@@ -13,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
 import com.patrick.dailypoem.data.model.Poem
 import com.patrick.dailypoem.databinding.ActivityMainBinding
+import com.patrick.dailypoem.util.CaptureManager
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -63,11 +64,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openShareDialog() {
-        val intent = Intent(Intent.ACTION_SEND)
-        intent.type = "text/plain"
-        intent.putExtra(Intent.EXTRA_TEXT, binding.textPoemBody.text)
-        val shareIntent: Intent = Intent.createChooser(intent, "share")
-        startActivity(shareIntent)
+        CaptureManager.capture(binding.poemWrap, this) { uri ->
+            val intent = Intent(Intent.ACTION_SEND)
+
+            intent.type = "image/png"
+            intent.putExtra(Intent.EXTRA_STREAM, uri)
+
+            startActivity(Intent.createChooser(intent, "공유하기"))
+        }
     }
 
     fun onRefresh() {
@@ -76,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     fun copyPoemToClipboard() {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val poem = binding.textPoemBody.text
+        val poem = "${binding.textPoemBody.text} ${binding.textTeller.text}"
 
         clipboard.setPrimaryClip(ClipData.newPlainText("Copied Poem", poem))
 
