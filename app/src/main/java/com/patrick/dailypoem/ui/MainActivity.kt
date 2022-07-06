@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handlePoemResult(poemResult: NetworkResult<Poem>) {
-        mainViewModel.isLoading.value = when(poemResult) {
+        mainViewModel.isLoading.value = when (poemResult) {
             is NetworkResult.Success -> {
                 setPoemData(poemResult.data!!)
                 false
