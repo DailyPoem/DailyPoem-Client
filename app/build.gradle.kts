@@ -1,10 +1,13 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
 }
-
+val properties = Properties()
+properties.load(project.rootProject.file("local.properties").inputStream())
 android {
     compileSdk = 32
 
@@ -14,8 +17,7 @@ android {
         targetSdk = Application.targetSdk
         versionCode = Application.versionCode
         versionName = Application.versionName
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "KEY", properties["TOKEN"].toString())
     }
 
     buildTypes {
