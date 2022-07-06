@@ -10,7 +10,6 @@ interface RandomImageService {
     @GET("photos/random")
     suspend fun getRandomImage(
         @Header("Authorization") authorization: String = "Client-ID HmN9iyUFrqDORpCmKq1zZxl0fm7T_DJ0ATn7O7o32NI",
-        @Query("query") query: String = "historical portrait",
-        @Query("topics") topics: String = "person"
+        @Query("collections") query: String = "OjKbQySOz6Q"
     ): Response<ImageResult>
 }
