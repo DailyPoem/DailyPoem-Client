@@ -12,8 +12,6 @@
         <variable
             name="viewModel"
             type="com.patrick.dailypoem.ui.MainViewModel" />
-
-
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -42,67 +40,85 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
 
-            <TextView
-                android:id="@+id/textPoemBody"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="48dp"
-                android:fontFamily="@font/seoulhangang"
-                android:lineHeight="24dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/poem_placeholder" />
-
-            <ImageView
-                android:id="@+id/iv_random_image"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="48dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/poem_placeholder" />
-
             <LinearLayout
-                android:id="@+id/shareWrap"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/textPoemBody"
-                app:layout_constraintStart_toStartOf="@+id/textPoemBody"
-                app:layout_constraintTop_toBottomOf="@+id/textPoemBody">
+                android:layout_marginHorizontal="40dp"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/buttonCopy"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/iv_random_image"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="@{!viewModel.isLoading}"
-                    android:contentDescription="@string/copy"
-                    android:focusable="true"
-                    android:onClick="@{() -> activity.copyPoemToClipboard()}"
-                    android:padding="6dp"
-                    android:src="@drawable/ic_copy"
-                    app:tint="@color/white" />
+                    tools:src="@tools:sample/avatars"
+                    android:adjustViewBounds="true"
+                    android:minHeight="100dp" />
 
-                <ImageView
-                    android:id="@+id/buttonShare"
+                <TextView
+                    android:id="@+id/textPoemBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/seoulhangang"
+                    android:lineHeight="24dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    tools:text="@string/poem_placeholder" />
+
+                <TextView
+                    android:id="@+id/textTeller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/seoulhangang"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    tools:text="- asdfsadf -" />
+
+                <LinearLayout
+                    android:id="@+id/shareWrap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="@{!viewModel.isLoading}"
-                    android:contentDescription="@string/share"
-                    android:focusable="true"
-                    android:padding="6dp"
-                    android:src="@drawable/ic_share"
-                    app:tint="@color/white" />
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/textPoemBody"
+                    app:layout_constraintStart_toStartOf="@+id/textPoemBody"
+                    app:layout_constraintTop_toBottomOf="@+id/textTeller">
+
+                    <ImageView
+                        android:id="@+id/buttonCopy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="@{!viewModel.isLoading}"
+                        android:contentDescription="@string/copy"
+                        android:focusable="true"
+                        android:onClick="@{() -> activity.copyPoemToClipboard()}"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_copy"
+                        app:tint="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/buttonShare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="@{!viewModel.isLoading}"
+                        android:contentDescription="@string/share"
+                        android:focusable="true"
+                        android:onClick="@{() -> activity.openShareDialog()}"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_share"
+                        app:tint="@color/white" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

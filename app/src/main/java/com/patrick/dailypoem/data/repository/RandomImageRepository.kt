@@ -1,21 +1,20 @@
-package com.patrick.dailypoem.data.repository.random
+package com.patrick.dailypoem.data.repository
 
 import com.patrick.dailypoem.data.network.RandomImageService
-import com.patrick.dailypoem.util.NetworkResult
 import javax.inject.Inject
 
 class RandomImageRepository @Inject constructor(
     private val service: RandomImageService
 ) {
-    suspend fun getRandomImage() = try {
+    suspend fun getRandomImage(): String = try {
         val result = service.getRandomImage()
 
         if (result.isSuccessful && result.body() != null) {
-            NetworkResult.Success(result.body()!!)
+            result.body()!!.urls.small
         } else {
-            NetworkResult.Error(result.message())
+            throw Exception(result.message())
         }
     } catch (e: Exception) {
-        NetworkResult.Error(e.stackTraceToString())
+        throw Exception(e.stackTraceToString())
     }
 }
