@@ -23,7 +23,7 @@ jobs:
     - name: Decode KEY
       env:
         BASEURL: ${{ secrets.KEY }}
-      run: echo TOKEN="$KEY" > ./local.properties
+      run: echo KEY="$KEY" > ./local.properties
 
 
     - name: Grant execute permission for gradlew
