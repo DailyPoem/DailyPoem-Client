@@ -5,17 +5,13 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import coil.load
-import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
 import com.patrick.dailypoem.data.model.Poem
-import com.patrick.dailypoem.data.model.PoemData
-import com.patrick.dailypoem.data.model.random.RandomImage
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint

@@ -6,13 +6,10 @@ import retrofit2.http.GET
 
 interface PoemService {
     /**
-     * 서버에 Poem를 요청
+     * AI가 생성한 따끈따끈하고 그럴싸해 보이는 문장을 가져옵니다.
      *
-     * GET의 엔드포인트는 실제 서버 완성 시 수정해야 합니다
-     *
-     * @return 생성된 Poem을 반환합니다.
+     * @return 그럴듯해 보이는 문장을 반환합니다.
      */
-    // TODO: 서버 완성 시 엔드포인트 수정 필요
     @GET("epitagram")
     suspend fun getPoem(): Response<PoemData>
 }

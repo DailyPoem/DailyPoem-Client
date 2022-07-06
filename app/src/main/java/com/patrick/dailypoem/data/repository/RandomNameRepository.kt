@@ -9,6 +9,7 @@ val firstNameList = listOf(
     "경민",
     "보석",
     "병진",
+    "은성",
     "Wade",
     "Dave",
     "Seth",
@@ -108,7 +109,7 @@ val firstNameList = listOf(
     "Harold",
     "Jerry",
     "Shawn",
-    "Walter",
+    "Walter"
 )
 
 val surNameList = listOf(
@@ -261,5 +262,5 @@ val surNameList = listOf(
     "Lara",
     "Pace",
     "Trujillo",
-    "Grant",
+    "Grant"
 )

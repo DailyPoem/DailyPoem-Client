@@ -32,8 +32,6 @@ object Versions {
     }
     object Util {
         const val LeakCanary = "2.9.1"
-        const val Logeukes = "1.0.0"
-
     }
 
     object Retrofit {
