@@ -29,7 +29,7 @@ object Dependencies {
 
     val Kakao = listOf(
         "com.kakao.sdk:v2-link:2.4.2", // 메시지(카카오링크)
-        "com.kakao.sdk:kakaolink:1.27.0", // 카카오링크
+        "com.kakao.sdk:kakaolink:1.27.0" // 카카오링크
 
     )
     val Jetpack = listOf(
@@ -53,5 +53,9 @@ object Dependencies {
 
         // Gson
         "com.google.code.gson:gson:${Versions.Retrofit.Gson}"
+    )
+
+    val AdMob = listOf(
+        "com.google.android.gms:play-services-ads:21.0.0"
     )
 }
