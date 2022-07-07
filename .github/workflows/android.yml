@@ -24,6 +24,7 @@ jobs:
       env:
         BASEURL: ${{ secrets.KEY }}
       run: echo KEY="$KEY" > ./local.properties
+        echo ::set-output name=status::$status
 
 
     - name: Grant execute permission for gradlew
