@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setPoemData(poem: Poem) = with(binding) {
-        ivRandomImage.load(poem.imageUrl) {
+        ivRandomImage.load(poem.image.urls.small) {
             crossfade(true)
         }
         textPoemBody.text = "\"${poem.poem}\""
