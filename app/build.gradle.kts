@@ -51,7 +51,8 @@ dependencies {
         Dependencies.Essential,
         Dependencies.Jetpack,
         Dependencies.Retrofit,
-        Dependencies.Kakao
+        Dependencies.Kakao,
+        Dependencies.AdMob
     ).flatten()
 
     dependencies.forEach(::implementation)
