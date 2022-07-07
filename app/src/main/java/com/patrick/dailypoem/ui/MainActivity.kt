@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -14,6 +15,7 @@ import com.patrick.dailypoem.R
 import com.patrick.dailypoem.data.model.Poem
 import com.patrick.dailypoem.databinding.ActivityMainBinding
 import com.patrick.dailypoem.util.CaptureManager
+import com.patrick.dailypoem.util.Constants.TAG
 import com.patrick.dailypoem.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
             is NetworkResult.Error -> {
                 showErrorMessage(poemResult.message!!)
+                Log.d(TAG, "handlePoemResult: Error occurred with = ${poemResult.message}")
                 false
             }
             is NetworkResult.Loading -> {
@@ -63,17 +66,6 @@ class MainActivity : AppCompatActivity() {
         textTeller.text = "- ${poem.teller} -"
     }
 
-    fun openShareDialog() {
-        CaptureManager.capture(binding.poemWrap, this) { uri ->
-            val intent = Intent(Intent.ACTION_SEND)
-
-            intent.type = "image/png"
-            intent.putExtra(Intent.EXTRA_STREAM, uri)
-
-            startActivity(Intent.createChooser(intent, "공유하기"))
-        }
-    }
-
     fun onRefresh() {
         mainViewModel.getPoem()
     }
@@ -87,5 +79,16 @@ class MainActivity : AppCompatActivity() {
         Snackbar.make(binding.root, "시가 복사되었습니다", Snackbar.LENGTH_SHORT)
             .setAction("확인") {}
             .show()
+    }
+
+    fun openShareDialog() {
+        CaptureManager.capture(binding.poemWrap, this) { uri ->
+            val intent = Intent(Intent.ACTION_SEND)
+
+            intent.type = "image/png"
+            intent.putExtra(Intent.EXTRA_STREAM, uri)
+
+            startActivity(Intent.createChooser(intent, "공유하기"))
+        }
     }
 }
