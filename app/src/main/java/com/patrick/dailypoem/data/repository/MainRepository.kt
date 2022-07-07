@@ -17,7 +17,7 @@ class MainRepository @Inject constructor(
 
         NetworkResult.Success(
             Poem(
-                imageUrl = imageUrl,
+                image = imageUrl,
                 poem = poem,
                 teller = name
             )
