@@ -11,6 +11,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import coil.load
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.snackbar.Snackbar
 import com.patrick.dailypoem.R
 import com.patrick.dailypoem.data.model.Poem
@@ -32,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         lifecycleOwner = this@MainActivity
         activity = this@MainActivity
         viewModel = mainViewModel
+
+        MobileAds.initialize(this@MainActivity) {}
+        adView.loadAd(AdRequest.Builder().build())
 
         mainViewModel.poemResult.observe(this@MainActivity) { poemResult ->
             handlePoemResult(poemResult)

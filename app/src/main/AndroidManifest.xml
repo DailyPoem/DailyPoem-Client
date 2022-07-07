@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyPoem"
         android:usesCleartextTraffic="true">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9421036322487496~4878485991"/>
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">

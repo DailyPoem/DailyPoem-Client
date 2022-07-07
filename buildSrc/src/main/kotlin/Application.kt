@@ -1,6 +1,5 @@
 import org.gradle.api.JavaVersion
 
-
 object Application {
     const val minSdk = 23
     const val targetSdk = 31
