@@ -33,10 +33,11 @@
                 android:layout_margin="12dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="@{!viewModel.isLoading}"
-                android:onClick="@{() -> activity.openSettingsDialog()}"
                 android:contentDescription="@string/settings"
                 android:focusable="true"
+                android:onClick="@{() -> activity.openSettingsDialog()}"
                 android:src="@drawable/ic_settings"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
@@ -49,14 +50,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" >
+                app:layout_constraintTop_toTopOf="parent">
+
                 <LinearLayout
                     android:id="@+id/poemWrap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:orientation="vertical"
-                    android:padding="20dp" >
+                    android:padding="20dp">
 
                     <ImageView
                         android:id="@+id/iv_random_image"

@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openSettingsDialog() {
-
+        // TODO: 잘 하기...
     }
 
     fun openShareDialog() {
