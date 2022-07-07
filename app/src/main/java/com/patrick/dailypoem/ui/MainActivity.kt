@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
         textPoemBody.text = "\"${poem.poem}\""
         textTeller.text = "- ${poem.teller} -"
+        textAttribution.text = "Photo by ${poem.image.user.name} on Unsplash"
     }
 
     fun onRefresh() {
@@ -90,5 +92,11 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(Intent.createChooser(intent, "공유하기"))
         }
+    }
+
+    fun openImageSource() = mainViewModel.poemResult.value?.data?.image?.user?.links?.html?.let {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(it)
+        startActivity(intent)
     }
 }
