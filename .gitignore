@@ -56,6 +56,17 @@ captures/
 #*.keystore
 
 # External native build folder generated in Android Studio 2.2 and later
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
 .externalNativeBuild
 .cxx/
 
@@ -83,3 +94,6 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+.cxx
+
+buildSrc/build

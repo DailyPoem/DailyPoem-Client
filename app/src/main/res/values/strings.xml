@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DailyPoem</string>
+    <string name="settings">설정</string>
+    <string name="copy">복사하기</string>
+    <string name="share">공유하기</string>
+    <string name="share_description">인공지능이 만든 시를 공유해보세요!</string>
+    <string name="share_kakaotalk">카카오톡으로 공유</string>
+    <string name="share_facebook">페이스북으로 공유</string>
+    <string name="share_instagram">인스타그램으로 공유</string>
+    <string name="share_twitter">트위터로 공유</string>
+    <string name="poem_placeholder">\"자식 키우기란 자녀에게 사랑을 가르치는 것이다.\"</string>
+
+    <string name="kakaolink_host">kakaolink</string>
+    <string name="kakao_scheme">"입력"</string>
+    <string name="kakao_native">"하세요!"</string>
+</resources>
