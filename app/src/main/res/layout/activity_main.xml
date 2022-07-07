@@ -33,6 +33,7 @@
                 android:layout_margin="12dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="@{!viewModel.isLoading}"
+                android:onClick="@{() -> activity.openSettingsDialog()}"
                 android:contentDescription="@string/settings"
                 android:focusable="true"
                 android:src="@drawable/ic_settings"

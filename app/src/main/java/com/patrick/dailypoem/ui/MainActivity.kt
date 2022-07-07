@@ -83,6 +83,10 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    fun openSettingsDialog() {
+
+    }
+
     fun openShareDialog() {
         CaptureManager.capture(binding.poemWrap, this) { uri ->
             val intent = Intent(Intent.ACTION_SEND)
