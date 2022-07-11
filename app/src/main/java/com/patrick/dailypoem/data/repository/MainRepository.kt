@@ -10,19 +10,25 @@ class MainRepository @Inject constructor(
 ) {
     private val randomNameRepository = RandomNameRepository()
 
-    suspend fun getPoem(): NetworkResult<Poem> = try {
-        val imageUrl = randomImageRepository.getRandomImage()
-        val poem = poemRepository.getPoem()
+    suspend fun getPoem(): NetworkResult<Poem> {
+        val imageUrl = try {
+            randomImageRepository.getRandomImage()
+        } catch (e: Exception) {
+            null
+        }
+        val poem = try {
+            poemRepository.getPoem()
+        } catch (e: Exception) {
+            return NetworkResult.Error(e.stackTraceToString())
+        }
         val name = randomNameRepository.getRandomName()
 
-        NetworkResult.Success(
+        return NetworkResult.Success(
             Poem(
                 image = imageUrl,
                 poem = poem,
                 teller = name
             )
         )
-    } catch (e: Exception) {
-        NetworkResult.Error(e.message)
     }
 }

@@ -65,12 +65,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setPoemData(poem: Poem) = with(binding) {
-        ivRandomImage.load(poem.image.urls.small) {
+        ivRandomImage.load(poem.image?.urls?.small ?: R.drawable.placeholder) {
             crossfade(true)
         }
+        textAttribution.text = "Photo by ${poem.image?.user?.name ?: "할당량 초과..."} on Unsplash"
         textPoemBody.text = "\"${poem.poem}\""
         textTeller.text = "- ${poem.teller} -"
-        textAttribution.text = "Photo by ${poem.image.user.name} on Unsplash"
     }
 
     fun onRefresh() {
