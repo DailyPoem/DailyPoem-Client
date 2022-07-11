@@ -65,7 +65,7 @@
 
                 <LinearLayout
                     android:id="@+id/poemWrap"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:orientation="vertical"
@@ -74,14 +74,15 @@
                     <ImageView
                         android:id="@+id/iv_random_image"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxHeight="320dp"
+                        android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true"
-                        android:minHeight="100dp"
                         tools:src="@tools:sample/avatars" />
 
                     <TextView
                         android:id="@+id/textPoemBody"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/seoulhangang"
