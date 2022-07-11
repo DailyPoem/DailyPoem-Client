@@ -38,6 +38,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:id="@+id/buttonRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="@{!viewModel.isLoading}"
+                android:contentDescription="@string/settings"
+                android:focusable="true"
+                android:onClick="@{() -> activity.onRefresh()}"
+                android:src="@drawable/ic_refresh"
+                ads:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                ads:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/white" />
+
+            <ImageView
                 android:id="@+id/buttonSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,6 +70,7 @@
                 app:tint="@color/white" />
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -65,7 +82,7 @@
 
                 <LinearLayout
                     android:id="@+id/poemWrap"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:orientation="vertical"
@@ -75,13 +92,14 @@
                         android:id="@+id/iv_random_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true"
-                        android:minHeight="100dp"
+                        android:maxHeight="320dp"
                         tools:src="@tools:sample/avatars" />
 
                     <TextView
                         android:id="@+id/textPoemBody"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/seoulhangang"

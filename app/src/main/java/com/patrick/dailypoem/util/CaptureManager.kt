@@ -48,7 +48,7 @@ class CaptureManager {
             val path: String = MediaStore.Images.Media.insertImage(
                 context.contentResolver,
                 inImage,
-                "Title",
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")),
                 null
             )
             return Uri.parse(path)
